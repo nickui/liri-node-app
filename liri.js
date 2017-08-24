@@ -4,8 +4,7 @@ var Twitter = require('twitter');
 var request = require("request");
 
 var liriCommand = process.argv[2];
-var value = process.argv[3];
-
+var value = process.argv[3]; //need a for loop to get the movie title of movies >1 word
 
 client = new Twitter({
     consumer_key: twitterKey.twitterKeys.consumer_key,
@@ -14,15 +13,13 @@ client = new Twitter({
     access_token_secret: twitterKey.twitterKeys.access_token_secret,
   });
 
-
-
   switch (liriCommand) {
     case "my-tweets":
       myTweets();
       break;
   
     case "spotify-this-song":
-      //deposit();
+      //spotify();
       break;
   
     case "movie-this":
@@ -30,10 +27,9 @@ client = new Twitter({
       break;
   
     case "do-what-it-says":
-      //lotto();
+      //doIt();
       break;
   }
-
 
   function myTweets() {
     var params = {screen_name: 'linkstocheckout', count: 20};
@@ -57,7 +53,7 @@ client = new Twitter({
                     console.log("Title: " + JSON.parse(body).Title);
                     console.log("Release Year: " + JSON.parse(body).Year);
                     console.log("IMDB Rating: " + JSON.parse(body).imdbRating);
-                    //console.log("Rotten Tomatoes Rating: " + JSON.parse(body).Ratings[1].Value);
+                    console.log("Rotten Tomatoes Rating: " + JSON.parse(body).Ratings[1].Value);
                     console.log("Filmed in: " + JSON.parse(body).Country);
                     console.log("Language: " + JSON.parse(body).Language);
                     console.log("Plot: " + JSON.parse(body).Plot);
@@ -76,7 +72,7 @@ client = new Twitter({
                     console.log("Title: " + JSON.parse(body).Title);
                     console.log("Release Year: " + JSON.parse(body).Year);
                     console.log("IMDB Rating: " + JSON.parse(body).imdbRating);
-                    //console.log("Rotten Tomatoes Rating: " + JSON.parse(body).Ratings[1].Value);
+                    console.log("Rotten Tomatoes Rating: " + JSON.parse(body).Ratings[1].Value);
                     console.log("Filmed in: " + JSON.parse(body).Country);
                     console.log("Language: " + JSON.parse(body).Language);
                     console.log("Plot: " + JSON.parse(body).Plot);
@@ -86,13 +82,3 @@ client = new Twitter({
         }
 
     }
-
-
-    // Title of the movie.
-    // Year the movie came out.
-    // IMDB Rating of the movie.
-    // Rotten Tomatoes Rating of the movie.
-    // Country where the movie was produced.
-    // Language of the movie.
-    // Plot of the movie.
-    // Actors in the movie.
